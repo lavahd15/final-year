@@ -1,0 +1,93 @@
+/*
+ * SubCategoryController
+ *
+ * Version information
+ *
+ * 10/29/2018
+ *
+ * Copyright (c) 2018 Cybage software Pvt. Ltd. All rights reserved
+ */
+
+/**
+ * @file SubCategoryController
+ * Brief description of contents of file.
+ * Long description
+ * @date 10/29/2018
+ */
+
+package com.ldrp.onlineexamsystem.controller;
+
+import com.ldrp.onlineexamsystem.exceptions.CategoryNotFoundException;
+import com.ldrp.onlineexamsystem.exceptions.SubCategoryNotFoundException;
+import com.ldrp.onlineexamsystem.model.SubCategory;
+import com.ldrp.onlineexamsystem.model.dto.SubCategoryDTO;
+import com.ldrp.onlineexamsystem.service.SubCategoryService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.Type;
+import java.util.List;
+
+/**
+ * The Example class provides ...
+ *
+ * @author {neelp}
+ */
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/subcategory")
+public class SubCategoryController {
+
+    @Autowired
+    private SubCategoryService subCategoryService;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
+    /**
+     * @param subCategory Subcategory object to be inserted in database.
+     */
+    @PostMapping("/insert")
+    private void insertSubCategory(@RequestBody SubCategory subCategory) {
+        subCategoryService.insertSubCategory(subCategory);
+    }
+
+    /**
+     * @param categoryId categoryId to be found in database
+     * @return list of all subcategories of given category ID.
+     */
+    @GetMapping("/category/id/{categoryId}")
+    private List<SubCategoryDTO> getSubcategoryByCategoryId(@PathVariable int categoryId)
+            throws CategoryNotFoundException {
+        Type subCategoryListType = new TypeToken<List<SubCategoryDTO>>() {
+        }.getType();
+        return modelMapper.map(subCategoryService.getSubcategoryByCategoryId(categoryId), subCategoryListType);
+        // return subCategoryService.getSubcategoryByCategoryId(categoryId);
+    }
+
+    /**
+     * @param subCategoryId to be found
+     * @return SubCategoryName related to the id
+     * @throws SubCategoryNotFoundException
+     */
+    @GetMapping("/id/{subCategoryId}")
+    private SubCategory getSubCategeryById(@PathVariable int subCategoryId) throws SubCategoryNotFoundException {
+        return subCategoryService.getSubCategoryById(subCategoryId);
+    }
+
+    /**
+     * @return List of all subcatgories present
+     */
+    @GetMapping("/all")
+    private List getAllSubCategories() {
+        return subCategoryService.getAllSubcategories();
+    }
+
+    @GetMapping("/category/{subcategoryId}")
+    private String getCategoryIdBySubcategoryId(@PathVariable int subcategoryId) {
+        return subCategoryService.getCategoryIdBySubcategoryId(subcategoryId);
+    }
+
+}

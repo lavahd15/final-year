@@ -1,0 +1,35 @@
+/*
+ * CategoryRepository
+ *
+ * Version information
+ *
+ * 10/26/2018
+ *
+ * Copyright (c) 2018 Cybage software Pvt. Ltd. All rights reserved
+ */
+
+/**
+ * @file CategoryRepository
+ * Brief description of contents of file.
+ * Long description
+ * @date 10/26/2018
+ */
+
+package com.ldrp.onlineexamsystem.repository;
+
+import com.ldrp.onlineexamsystem.model.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ * The Category interface Repository provides access to database by using
+ * spring-data-JPA
+ * This interface implements CRUDrepository to provide basic functionality of
+ * creating, retrieving, updating and deleting.
+ *
+ * @author Neel Parikh
+ */
+@Repository
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
+
+}

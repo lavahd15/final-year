@@ -1,0 +1,59 @@
+/*
+ * Test
+ *
+ * Version information
+ *
+ * 10/31/2018
+ *
+ * Copyright (c) 2018 Cybage software Pvt. Ltd. All rights reserved
+ */
+
+/*
+ * @file Test
+ * Brief description of contents of file.
+ * Long description
+ * @date 10/31/2018
+ */
+package com.ldrp.onlineexamsystem.service;
+
+import com.ldrp.onlineexamsystem.exceptions.SubCategoryNotFoundException;
+import com.ldrp.onlineexamsystem.exceptions.TestNotFoundException;
+import com.ldrp.onlineexamsystem.model.Test;
+import com.ldrp.onlineexamsystem.model.dto.IdMapDTO;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+/**
+ * The Example interface provides ...
+ *
+ * @author {neelp}
+ */
+@Service
+public interface TestService {
+    /**
+     * @return List of all tests
+     */
+    List<Test> getAllTests() throws TestNotFoundException;
+
+    /**
+     * @param subCategoryId Id to find all tests
+     * @return List of tests with given subcategory ID
+     */
+    List<Test> getTestBySubCategoryId(int subCategoryId) throws SubCategoryNotFoundException;
+
+    /**
+     * @param testId testID to find test
+     * @return Test Object
+     */
+    Test getTestByTestId(int testId) throws TestNotFoundException;
+
+    void insertTest(Test test, InputStream file) throws SubCategoryNotFoundException, IOException;
+
+    long getSubCategoryCountByTestId(int subCategoryId) throws Exception;
+
+    IdMapDTO getCategoryIdSubcategoryIdByTestId(int testId);
+
+}

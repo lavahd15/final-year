@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="online-evaluation-system">
+        <class>com.ldrp.onlineexamsystem.model.Category</class>
+        <class>com.ldrp.onlineexamsystem.model.CompetencyAnalysis</class>
+        <class>com.ldrp.onlineexamsystem.model.Log</class>
+        <class>com.ldrp.onlineexamsystem.model.Option</class>
+        <class>com.ldrp.onlineexamsystem.model.ParentQuestion</class>
+        <class>com.ldrp.onlineexamsystem.model.Question</class>
+        <class>com.ldrp.onlineexamsystem.model.QuestionTest</class>
+        <class>com.ldrp.onlineexamsystem.model.Response</class>
+        <class>com.ldrp.onlineexamsystem.model.Result</class>
+        <class>com.ldrp.onlineexamsystem.model.SubCategory</class>
+        <class>com.ldrp.onlineexamsystem.model.SubskillAnalysis</class>
+        <class>com.ldrp.onlineexamsystem.model.Test</class>
+        <class>com.ldrp.onlineexamsystem.model.User</class>
+        <class>com.ldrp.onlineexamsystem.model.UserTest</class>
+
+    </persistence-unit>
+</persistence>
