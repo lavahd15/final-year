@@ -1,0 +1,128 @@
+<app-navbar-user></app-navbar-user>
+
+<div *ngIf="isLoading; else testContent">
+  <app-loader></app-loader>
+</div>
+
+<ng-template #testContent class="container">
+
+  <label class="test-title center">
+    {{responseObject.testName}}
+  </label>
+
+  <div class="card">
+
+    <form action="" method="post" #testForm="ngForm" (ngSubmit)="onSubmit(testForm.value)">
+
+      <div *ngFor="let pqList of responseObject.parentQuestionList; let i = index" class="par-que-count">
+
+        <label class="title center">
+          {{pqList.parentQuestionDesc}}
+        </label>
+
+        <div *ngFor="let question of pqList.questionList; let j = index" class="que-count">
+
+          <label class="subtitle center">
+            {{pqList.topicName}} | {{question.subtopicName}}
+          </label>
+
+          <div class="question space-between">
+
+            <!-- MCQ -->
+            <div *ngIf="question.questionType === 'MCQ'; then mcq"></div>
+            <ng-template #mcq>
+              <div class="que-content">
+                <label class="small"><strong>Que.&nbsp;</strong>
+                  {{question.questionDesc}}</label>
+                <div class="options">
+                  <input type="radio" ngModel id="{{question.questionId}}-1" name="{{question.questionId}}" value="A">&nbsp;<label
+                    class="tiny">{{question.option.optionA}}</label><br>
+                  <input type="radio" ngModel id="{{question.questionId}}-2" name="{{question.questionId}}" value="B">&nbsp;<label
+                    class="tiny">{{question.option.optionB}}</label><br>
+                  <input type="radio" ngModel id="{{question.questionId}}-3" name="{{question.questionId}}" value="C">&nbsp;<label
+                    class="tiny">{{question.option.optionC}}</label><br>
+                  <input type="radio" ngModel id="{{question.questionId}}-4" name="{{question.questionId}}" value="D">&nbsp;<label
+                    class="tiny">{{question.option.optionD}}</label>
+                </div>
+              </div>
+
+              <div class="que-info">
+                <label class="small">
+                  {{question.difficulty}} | {{question.marks}} M
+                </label>
+              </div>
+            </ng-template>
+
+            <!-- TRUE FALSE -->
+            <div *ngIf="question.questionType === 'TRUE_FALSE'; then tf"></div>
+            <ng-template #tf>
+              <div class="que-content">
+                <label class="small"><strong>Que.&nbsp;</strong>
+                  {{question.questionDesc}}</label>
+                <div class="options">
+                  <input type="radio" ngModel id="{{question.questionId}}-1" name="{{question.questionId}}" value="true">&nbsp;<label
+                    class="tiny">True</label><br>
+                  <input type="radio" ngModel id="{{question.questionId}}-2" name="{{question.questionId}}" value="false">&nbsp;<label
+                    class="tiny">False</label>
+                </div>
+              </div>
+
+              <div class="que-info">
+                <label class="small">
+                  {{question.difficulty}} | {{question.marks}} M
+                </label>
+              </div>
+            </ng-template>
+
+            <!-- FILL IN THE BLANKS -->
+            <div *ngIf="question.questionType === 'FILL_IN_THE_BLANKS'; then fib"></div>
+            <ng-template #fib>
+              <div class="que-content">
+                <label class="small"><strong>Que.&nbsp;</strong>
+                  {{question.questionDesc}}</label>
+                <div class="options">
+                  <input type="textarea" ngModel id="{{question.questionId}}-1" name="{{question.questionId}}" placeholder="Answer">
+                </div>
+              </div>
+
+              <div class="que-info">
+                <label class="small">
+                  {{question.difficulty}} | {{question.marks}} M
+                </label>
+              </div>
+            </ng-template>
+
+            <!--  DESCRIPTIVE 
+          <div *ngIf="question.queType === 'desc'; then desc"></div>
+          <ng-template #desc>
+            <div class="que-content">
+              <label class="small"><strong>Que.</strong>
+                This is the question that is to be fetched from backend!</label>
+              <div class="options">
+                <input type="textarea" id="question.questionId" placeholder="Answer" name="">
+              </div>
+            </div>
+
+            <div class="que-info">
+              <label class="small">
+                {{question.difficulty}} | {{question.marks}} M
+              </label>
+            </div>
+          </ng-template> -->
+
+          </div> <!-- end of question -->
+
+        </div>
+      </div> <!-- end of ngFor -->
+
+      <div class="center">
+        <input class="small" type="submit">
+      </div>
+
+    </form>
+
+  </div> <!-- end of card -->
+
+</ng-template> <!-- end of container -->
+
+<app-footer></app-footer>

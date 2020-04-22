@@ -1,0 +1,22 @@
+<label class="title">Uploaded Tests</label>
+
+<div class="global-container">
+  <div *ngFor="let response of responseObject" class="global-card">
+
+    <!-- <div class="rowOne">
+      <label class="big">{{category}} &nbsp;|&nbsp; {{subcategory}}</label>
+      <label>Uploaded: {{uploadedOnDate}}</label>
+    </div> -->
+
+    <div class="rowTwo">
+      <h2>{{response.testName}}</h2>
+      <label>{{response.parentQuestionList.length}} Topics </label>
+    </div>
+
+    <div class="rowThree">
+      <label>Total: {{response.totalMarks}} marks</label>
+      <label>Cutoff: {{response.cutoff}}</label>
+    </div>
+
+  </div>
+</div>

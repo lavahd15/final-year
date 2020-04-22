@@ -1,0 +1,57 @@
+<div class="nav">
+    <app-navbar-user></app-navbar-user>
+</div>
+
+<div class="main-content">
+
+    <div *ngIf="isApplyTest; then newTest"></div>
+    <ng-template #newTest>
+        <!-- to be rendered when user gives test -->
+        <div class="container">
+            <app-test></app-test>
+        </div>
+    </ng-template>
+
+    <div *ngIf="isIntro; then intro"></div>
+    <ng-template #intro>
+        <!-- to be rendered when admin page is loaded for the first time or when clicked home or icon -->
+        <div class="container">
+            <app-intro></app-intro>
+        </div>
+    </ng-template>
+
+    <div *ngIf="isDash; then dash"></div>
+    <ng-template #dash>
+        <!-- to be rendered when clicked on My Dash -->
+        <div class="dash">
+            <div class="sidebar">
+                <app-sidebar></app-sidebar>
+            </div>
+
+            <div class="content">
+                <app-user-content></app-user-content>
+            </div>
+        </div>
+    </ng-template>
+
+    <div *ngIf="isMyTest; then myTest"></div>
+    <ng-template #myTest>
+        <!-- to be rendered when clicked on My Test -->
+        <div class="container">
+            <app-my-test></app-my-test>
+        </div>
+    </ng-template>
+
+    <div *ngIf="isResult; then result"></div>
+    <ng-template #result>
+        <!-- to be rendered when clicked on Results -->
+        <div class="container">
+            <app-results></app-results>
+        </div>
+    </ng-template>
+
+</div>
+
+<div class="foot">
+    <app-footer></app-footer>
+</div>

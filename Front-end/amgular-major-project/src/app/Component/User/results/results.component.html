@@ -1,0 +1,34 @@
+<label class="title">Results</label>
+
+<div class="global-container">
+  <div *ngFor="let result of results" class="global-card">
+    <div *ngFor="let test of tests">
+
+      <div *ngIf="result.testId == test.testId;">
+
+
+          <div class="rowOne">
+            <!-- <label class="big">{{category}} &nbsp;|&nbsp; {{subcategory}}</label> -->
+
+          </div>
+
+          <div class="rowTwo">
+            <h2>{{test.testName}}</h2>
+            <label>Score: {{test.totalMarks*result.percentObt/100}} M</label>
+            <label>Result:
+              <span *ngIf="test.totalMarks*result.percentObt/100 >= test.cutoff; else fail">Pass</span>
+              <ng-template #fail>Fail</ng-template>
+            </label>
+          </div>
+
+          <div class="rowThree">
+            <label>Total Marks: {{test.totalMarks}} M</label>
+            <label>Cutoff: {{test.cutoff}} M</label>
+            <label>Percentage: {{result.percentObt}}%</label>
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

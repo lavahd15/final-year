@@ -1,0 +1,23 @@
+<label class="title">Appeared Tests</label>
+
+<div class="global-container">
+  <div *ngFor="let test of testObject" class="global-card">
+
+    <div class="rowOne">
+      <!-- <label class="big">{{category}} &nbsp;|&nbsp; {{subcategory}}</label> -->
+
+    </div>
+
+    <div class="rowTwo">
+      <h2>{{test.testName}}</h2>
+      <label>{{test.parentQuestionList.length}} Ques | {{test.time}} Mins</label>
+    </div>
+
+    <div class="rowThree">
+      <label>Total: {{test.totalMarks}} marks</label>
+      <label>Cutoff: {{test.cutoff}} M</label>
+    </div>
+
+  </div>
+  <label class="link">Click&nbsp;<a routerLink="/user/result">here</a>, to check available results!</label>
+</div>

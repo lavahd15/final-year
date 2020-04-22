@@ -1,0 +1,54 @@
+<div class="nav">
+    <app-navbar-admin></app-navbar-admin>
+</div>
+
+<div class="main-content">
+
+    <div *ngIf="isIntro; then intro"></div>
+    <ng-template #intro>
+        <!-- to be rendered when admin page is loaded for the first time or when clicked home or icon -->
+        <div class="container">
+            <app-intro></app-intro>
+        </div>
+    </ng-template>
+
+    <div *ngIf="isMyTest; then uploaded"></div>
+    <ng-template #uploaded>
+        <!-- to be rendered when admin clicks my test -->
+        <div class="container">
+            <app-uploaded-test></app-uploaded-test>
+        </div>
+    </ng-template>
+
+    <div *ngIf="isReview; then review"></div>
+    <ng-template #review>
+        <!-- to be rendered when admin clicks review -->
+        <div class="container">
+            <app-review></app-review>
+        </div>
+    </ng-template>
+
+    <div *ngIf="isUploadTest; then upload"></div>
+    <ng-template #upload>
+        <!-- to be rendered when admin clicks upload test -->
+        <div class="container">
+            <app-upload-test></app-upload-test>
+        </div>
+    </ng-template>
+
+    <!-- to be rendered when clicked on My Dash -->
+    <!-- <div class="dash">
+        <div class="sidebar">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <div class="content">
+            <app-admin-content></app-admin-content>
+        </div>
+    </div> -->
+
+</div>
+
+<div class="foot">
+    <app-footer></app-footer>
+</div>

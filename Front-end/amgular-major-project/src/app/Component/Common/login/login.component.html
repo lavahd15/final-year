@@ -1,0 +1,228 @@
+<div class="login--body">
+
+    <span class="left">
+        <div class="brief">
+            <img src="https://unsplash.it/200/200" class="img-responsive img-circle" alt="Image">
+            <label class="title">Online Exam System</label>
+            <div class="content">
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply
+                    dummy text of the printing and typesetting industry.
+                </p>
+            </div>
+        </div>
+    </span>
+
+  <span class="right">
+
+        <label class="title">Online Exam System</label>
+
+        <div class="form--body">
+
+            <div class="form--title">
+                <span class="form--title--left">
+                    <label #loginLabel (click)="toggle(loginLabel)" id="login-check">Login</label>
+                </span>
+                <span class="form--title--right">
+                    <label #registerLabel (click)="toggle(registerLabel)" id="register-check">Register</label>
+                </span>
+            </div>
+            <hr>
+
+          <!-- login form -->
+            <form [formGroup]="loginFormElements"
+                  #loginform = "ngForm"
+                  class="form--content active"
+                  id="login--form"
+                  (ngSubmit)="loginUser()">
+                <div class="form-group">
+                    <label for="username" class="sr-only">username</label>
+                    <input type="text" formControlName="username" class="form-control" placeholder="Username"
+                           minlength="1" maxlength="20" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" formControlName="password" class="form-control"
+                           placeholder="Password"
+                           minlength="8" required>
+                </div>
+              <!--<div class="form-group">
+                    <label for="type" class="sr-only">Type</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" formControlName="userType"  value="user" checked="checked">
+                            User
+                        </label>
+                        <label>
+                            <input type="radio" formControlName="userType"  value="admin">
+                            Admin
+                        </label>
+                    </div>
+                </div>-->
+                <div class="form--center">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+
+          <!-- registration form -->
+            <form [formGroup]="formElements"
+                  class="form--content inactive"
+                  id="registration--form"
+                  #form = "ngForm"
+                  (ngSubmit)="registerUser()">
+
+                <div class="form-group">
+                    <label for="name" class="sr-only">Name</label>
+                    <input type="text"
+                           id="name"
+                           class="form-control"
+                           placeholder="Name"
+                           formControlName="name"
+                    >
+                </div>
+              <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                <div *ngIf="name.errors.required">Name is required</div>
+                <div *ngIf="name.errors.maxlength">Maximum length of username should not exceed{{name.errors.maxlength.requiredLength}}</div>
+                <div *ngIf="name.errors.shouldNotContainNumbers">Name should not contain numbers</div>
+              </div>
+
+                <div class="form-group">
+                    <label for="username" class="sr-only">User name</label>
+                    <input type="text" id="username"
+                           class="form-control"
+                           placeholder="Username"
+                           formControlName="username"
+                    >
+                </div>
+              <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                <div *ngIf="username.errors.required">Username is required</div>
+                <div *ngIf="username.errors.minlength">Username should be minimum {{username.errors.minlength.requiredLength}}</div>
+                <div *ngIf="username.errors.maxlength">Username should not exceed {{username.errors.maxlength.requiredLength}} </div>
+                <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space</div>
+                <div *ngIf="username.errors.userExists">Username already exists</div>
+              </div>
+
+                <div class="form-group">
+
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email"
+                           id="email"
+                           class="form-control"
+                           placeholder="Email"
+                           formControlName="email"
+                    >
+                </div>
+              <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="email.errors.maxlength">Email cannot exceed {{email.errors.maxlength.requiredLength}}</div>
+                <div *ngIf="email.errors.invalidEmail">Email is not valid</div>
+              </div>
+                <div formGroupName="passwordCheck">
+                <div class="form-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password"
+                           id="password"
+                           class="form-control"
+                           placeholder="Password"
+                           formControlName="password"
+                    >
+                  <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div
+                      *ngIf="password.errors.minlength">Password must be {{password.errors.minlength.requiredLength}}</div>
+                    <div *ngIf="password.errors.maxlength">Password must not exceed {{password.errors.maxlength.requiredLength}}</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password" class="sr-only">Confirm Password</label>
+                    <input type="password"
+                           id="confirm-password"
+                           class="form-control"
+                           placeholder="Confirm Password"
+                           formControlName="confirmPassword"
+                    >
+                  <div class="alert alert-danger" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+                    <div *ngIf="confirmPassword.errors.required">Password is required</div>
+                    <div *ngIf="confirmPassword.errors.minlength">Password must be {{confirmPassword.errors.minlength.requiredLength}} characters</div>
+                    <div *ngIf="confirmPassword.errors.maxlength">Password must not exceed {{confirmPassword.errors.maxlength.requiredLength}} characters</div>
+                    <div *ngIf="confirmPassword.errors.passwordMustMatch">Password and confirm password must macth</div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+                <div class="form-group">
+                    <label for="dob" class="sr-only">Date of Birth</label>
+                    <input type="date"
+                           id="date"
+                           class="form-control"
+                           formControlName="dob"
+                    >
+                  <div class="alert alert-danger" *ngIf="dob.touched && dob.invalid">
+                    <div *ngIf="dob.errors.required">Date of birth is a required field</div>
+                    <div *ngIf=" dob.errors.cannotBeFuture">Date of birth cannot exceed current date</div>
+                  </div>
+                </div>
+              <!-- <div class="form-group">
+              <label for="country" class="sr-only">Country</label>
+              <input type="text" name="country" id="country" class="form-control" placeholder="Country" minlength="1"
+                  maxlength="20" required>
+          </div> -->
+
+                <div class="form-group">
+                    <label for="gender" class="sr-only">Gender</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio"
+                                   formControlName="gender"
+
+                                   id="radio-gender-male"
+                                   value="male"
+                                   checked="checked">
+                            Male
+                        </label>
+                        <label>
+                            <input type="radio"
+                                   formControlName="gender"
+
+                                   id="female"
+                                   value="radio-gender-female">
+                            Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="type" class="sr-only">Type</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" formControlName="usertype"  id="radio-user" value="user" checked="checked">
+                            User
+                        </label>
+                        <label>
+                            <input type="radio" formControlName="usertype"  id="radio-admin" value="admin">
+                            Admin
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form--center">
+                  <button type="submit"
+                          id="btn=register"
+                          class="btn btn-md form--submit"
+                          value="Register"
+                          
+                  >Register
+
+                  </button>
+                </div>
+
+            </form>
+
+        </div>
+    </span>
+
+</div>

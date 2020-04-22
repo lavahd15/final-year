@@ -1,0 +1,89 @@
+.title {
+    margin: 0;
+    padding: 2.5rem 5.5rem 0;
+    color: rgba(10, 17, 40, 0.6);
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.card {
+    margin: 0;
+    padding: 0 0 2rem 0;
+    position: relative;
+    background-color: var(--white);
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    color: rgba(10, 17, 40, 0.8);
+    box-shadow: 0 0 1rem rgba(10, 36, 99, 0.3);
+    /* border: 2px solid rgba(10, 36, 99, 0.3); */
+    transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.space-around {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem 0;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.big {
+    font-size: 2rem;
+    font-weight: 500;
+}
+.small {
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+.tiny {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+select, input {
+    border: 1px solid rgba(10, 17, 40, 0.2);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+}
+option {
+    padding: 0.5rem;
+    color: rgba(10, 17, 40, 0.8);
+}
+
+.full-width {
+    width: 100%;
+    text-align: center;
+}
+
+.mar-0 {
+    margin: 0;
+}
+.pad-0 {
+    padding: 0;
+}
+
+input[type="submit"] {
+    margin: 1rem 1rem 0;
+    padding: 0.5rem;
+    border: 2px solid rgba(10, 17, 40, 0.1);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: rgba(10, 17, 40, 0.8);
+    transition: background-color 0.15s, color 0.15s;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(62, 105, 144, 0.65);
+    color: var(--white);
+}

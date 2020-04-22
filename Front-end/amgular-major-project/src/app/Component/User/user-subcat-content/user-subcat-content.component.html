@@ -1,0 +1,22 @@
+<div *ngIf="isLoading; else subcat">
+  <app-loader></app-loader>
+</div>
+
+<div id="#subcat">
+  <div class="title">
+    {{categoryName}}
+  </div>
+
+  <div class="content">
+
+    <div *ngFor="let subcategory of subcategoryResponse">
+      <a (click)="getTest(subcategory.subcategoryId)"  class="card">
+        <h2 class="card-h2">{{ subcategory.subcategoryName }}</h2>
+        <!--to be chnaged-->
+        <p>{{subcategory.testCount}} Tests</p>
+      </a>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,95 @@
+<label class="title">New Test</label>
+
+<div class="global-container">
+  <div class="card">
+
+    <form [formGroup]="formElements"
+          #form="ngForm"
+          (ngSubmit)="uploadFile(form)"
+          enctype="multipart/form-data">
+
+      <div class="space-around">
+
+        <label class="big">
+          Category :&nbsp;
+          <select (change)="getSubcategories($event)"
+                  class="small"
+                  formControlName="categoryId">
+            <option *ngFor="let category of categories"
+                    [value]="category.categoryId"
+            >{{category.categoryName}}
+            </option>
+          </select>
+        </label>
+
+
+        <label class="big">
+          Sub Category :&nbsp;
+          <select class="small" formControlName="subcategoryId">
+            <option *ngFor="let subcategory of subcategories"
+                    [value]="subcategory.subcategoryId"
+            >{{subcategory.subcategoryName}}
+            </option>
+          </select>
+        </label>
+
+      </div>
+
+      <div class="center">
+
+        <label class="big">
+          Test Name :&nbsp;
+          <input class="small" type="text" formControlName="testName">
+        </label>
+
+      </div>
+
+      <div class="space-around">
+
+        <label class="big">
+          Time :&nbsp;
+          <input class="small" type="number" formControlName="time">
+        </label>
+
+        <label class="big">
+          Marks :&nbsp;
+          <input class="small" type="number" formControlName="marks">
+        </label>
+
+        <label class="big">
+          Cutoff :&nbsp;
+          <input class="small" type="number" formControlName="cutoff">
+        </label>
+
+      </div>
+
+        <div class="space-around">
+
+          <label class="big">
+            File Upload :&nbsp;
+            <input class="small" type="file" formControlName="file" (change)="selectFile($event)">
+          </label>
+
+        </div>
+
+      <div class="center mar-0 pad-0">
+        <label class="tiny">
+          *Note : Upload only .xlxs file with proper format!
+        </label>
+      </div>
+
+      <div class="center">
+        <button type="submit"
+                id="btn=register"
+                class="btn btn-md form--submit"
+                value="Register"
+                [disabled]="!form.valid"
+        >Submit
+
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

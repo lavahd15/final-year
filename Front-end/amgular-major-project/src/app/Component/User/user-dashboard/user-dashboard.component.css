@@ -1,0 +1,30 @@
+.container {
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+    background: var(--white);
+    /* border-bottom: 1px solid rgba(10,17,40,0.2); */
+}
+
+.dash {
+    display: flex;
+}
+.sidebar {
+    margin: 0;
+    padding: 1.5rem;
+    width: 20vw;
+    height: auto;
+    background: var(--white);
+    border-right: 1px solid rgba(10,17,40,0.2);
+}
+
+.content {
+    margin: 0;
+    /* add 3rem of padding in chind component */
+    padding: 0;
+    width: 80vw;
+    height: auto;
+    background: var(--white);
+    border-left: 1px solid rgba(10,17,40,0.2);
+}

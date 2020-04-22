@@ -1,0 +1,28 @@
+<div *ngIf="isLoading; else test">
+  <div class="loader">
+    <app-loader></app-loader>
+  </div>
+</div>
+
+<div id="#test">
+  <div class="title">
+    {{categoryName}} &nbsp;/&nbsp; {{subcategoryName}}
+  </div>
+
+  <div class="content">
+
+    <div *ngFor="let test of testResponse" class="cards">
+
+      <div class="card">
+
+        <h2>{{ test.testName }}</h2>
+        <img src="../../../../assets/images/clock.png" alt="Tick Tok">
+        <label>{{questions}} Ques &nbsp;/&nbsp; {{test.time}} Mins</label>
+        <label>{{test.totalMarks}} Marks &nbsp;/&nbsp; {{test.cutoff}}% Cutoff</label>
+        <div id="noTest"></div>
+        <button (click)="startTest(test.testId)">Start Test</button>
+
+      </div>
+    </div>
+  </div>
+</div>

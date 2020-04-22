@@ -1,0 +1,229 @@
+.login--body{
+    background-color: var(--white);
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.login--body span.left, .login--body span.right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login--body span.left {
+    background-color: var(--white);
+    color: var(--blue);
+    left: 0;
+    padding: 4rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.login--body span.left .brief{
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login--body span.left .brief .title {
+    padding: 1.5rem;
+    font-size: 3.5rem;
+}
+
+.login--body span.left .brief .content {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.login--body span.left .brief .content .role .role-content-left{
+    width: 50%;
+    text-align: left;
+}
+.login--body span.left .brief .content .role .role-content-right{
+    width: 50%;
+    text-align: right;
+}
+
+.login--body span.right {
+    background-color: var(--blue);
+    color: var(--white);
+    position: absolute;
+    right: 0;
+}
+
+.login--body span.right .title {
+    width: 100%;
+    background: var(--white);
+    color: var(--blue);
+    padding: 2rem 0;
+    font-size: 3rem;
+    text-align: center;
+    display: none;
+}
+
+.login--body span.left::after, .login--body span.right::before {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    transform: scalex(0);
+    transition: transform 0.25s ease;
+}
+  
+.login--body span.left::after {
+    transform-origin: right;
+    border-top: 5px solid var(--blue);
+}
+  
+.login--body span.right::before {
+    transform-origin: left;
+    border-top: 5px solid var(--white);
+}
+  
+.login--body span.left:hover::after, .login--body span.right:hover::before {
+    transform: scalex(1);
+}
+  
+.login--body .form--body {
+    padding: 4rem;
+    width: 100%;
+}
+
+.login--body .active-label {
+    box-shadow: var(--shadow);
+}
+
+.login--body .active {
+    display: block;
+}
+
+.login--body .inactive {
+    display: none;
+}
+
+.form--title {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.login--body .form--title--left, .login--body .form--title--right {
+    font-size: 3.5rem;
+    width: 50%;
+    transition: transform 0.25s;
+}
+
+.login--body .form--title--left {
+    text-align: left;
+    border-right: 1px solid var(--white);
+}
+
+.login--body .form--title--right {
+    text-align: right;
+    border-left: 1px solid var(--white);
+}
+
+.login--body .form--title label {
+    transition: 0.25s;
+}
+
+.login--body .form--title--left:hover label, .login--body .form--title--right:hover label{
+    transform: scale(1.05);
+}
+
+.login--body .form--center {
+    display: flex;
+    justify-content: center;
+    color: var(--blue);
+}
+
+.login--body .form--content input {
+    color: var(--blue);   
+    font-size: 1.75rem;
+    font-weight: 600; 
+    padding: 1.8rem;
+}
+
+.login--body .form--content .radio {
+    color: var(--white);   
+    font-size: 1.75rem;
+    font-weight: 600; 
+    display: flex;
+    justify-content: center;
+}
+
+.login--body .form--content .radio > label {
+    padding: 0 2.5rem;
+}
+
+.login--body .form--content .form--submit {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: var(--white);
+    transition: 0.25s;
+    width: 60%;
+}
+
+.login--body .form--content .form--submit:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow);
+}
+
+/* for mobiles */
+@media screen and (max-width: 425px) {
+    .login--body span.left {
+        display: none;
+    }
+    .login--body span.right {
+        width: 100%;
+        display: block;
+    }
+    .login--body span.right::before {
+        transform-origin: center;
+    }
+    .login--body span.right .title {
+        display: block;
+    }
+    .login--body .form--title--left, .login--body .form--title--right {
+        font-size: 2rem;
+    }
+    .login--body .form--content input{
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+    .login--body .form--content .radio {
+        font-size: 1.5rem;
+    }
+  }
+
+  /* for tablet */
+@media screen and (max-width: 768px) {
+    .login--body span.left .brief img {
+        width: 140px;
+        height: 140px;
+    }
+    .login--body span.left .brief .title {
+        padding: 1.25rem;
+        font-size: 3rem;
+    }
+    .login--body span.left .brief .content {
+        font-size: 1.5rem;
+    }
+    .login--body .form--title--left, .login--body .form--title--right {
+        font-size: 2.5rem;
+    }
+    .login--body .form--content input{
+        font-size: 1.6rem;
+        padding: 1.4rem;
+    }
+    .login--body .form--content .radio {
+        font-size: 1.6rem;
+    }
+}

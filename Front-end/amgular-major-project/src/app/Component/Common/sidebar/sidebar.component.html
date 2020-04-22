@@ -1,0 +1,18 @@
+<div *ngIf="isLoading; else sidebar">
+    <app-loader></app-loader>
+</div>
+
+<ng-template #sidebar>
+  <div class="sidebar">
+    <ul class="cat-ul">
+      <li class="cat-li" *ngFor="let cat of responseObject">
+        <label class="cat-label">{{cat.categoryName}}</label>
+        <ul class="subcat-ul">
+          <li class="subcat-li" *ngFor="let subcat of cat.subCategoryList">
+            <a (click)="submit(subcat.subcategoryId,cat.categoryId)" [routerLink]=""> {{subcat.subcategoryName}} </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</ng-template>

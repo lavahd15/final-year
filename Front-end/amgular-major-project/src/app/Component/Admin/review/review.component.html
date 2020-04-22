@@ -1,0 +1,21 @@
+<label class="title">Review Tests</label>
+
+<div class="global-container">
+  <div *ngFor="let result of results" class="global-card">
+
+    <div class="rowOne">
+      <label class="big">{{category}} &nbsp;|&nbsp; {{subcategory}}</label>
+      <label>Uploaded: {{uploadedOnDate}}</label>
+    </div>
+
+    <div class="rowTwo">
+      <h2>{{testName}}</h2>
+    </div>
+
+    <div class="rowThree">
+      <label>Given by: {{userName}}</label>
+      <label>Date: {{appearedOn}}</label>
+    </div>
+
+  </div>
+</div>

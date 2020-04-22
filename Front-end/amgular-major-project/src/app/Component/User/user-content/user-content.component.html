@@ -1,0 +1,12 @@
+<div *ngIf="isSubcat; then subcat else test"></div>
+
+<ng-template #subcat>
+    <!-- must be rendered when user wants to view the subcats of specific cat -->
+    <app-user-subcat-content></app-user-subcat-content>
+</ng-template>
+
+
+<ng-template #test>
+    <!-- must be rendered when user wants to view the tests of specific subcat -->
+    <app-user-test-content></app-user-test-content>
+</ng-template>
